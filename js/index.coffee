@@ -64,7 +64,11 @@ calculateResult = ->
   itemScoreDic = {}
 
   for choice, i in choiceArray
-    scoreArray = p[i][Number(choice)]
+    scoreArray = []
+    if i == 7 && choice == 2
+      scoreArray = p[i][1]
+    else
+      scoreArray = p[i][Number(choice)]
     console.log(scoreArray)
     for item in scoreArray
       if !itemScoreDic[item]

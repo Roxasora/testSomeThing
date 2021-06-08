@@ -33,7 +33,12 @@
     itemScoreDic = {};
     for (i = j = 0, len = choiceArray.length; j < len; i = ++j) {
       choice = choiceArray[i];
-      scoreArray = p[i][Number(choice)];
+      scoreArray = [];
+      if (i === 7 && choice === 2) {
+        scoreArray = p[i][1];
+      } else {
+        scoreArray = p[i][Number(choice)];
+      }
       console.log(scoreArray);
       for (k = 0, len1 = scoreArray.length; k < len1; k++) {
         item = scoreArray[k];
