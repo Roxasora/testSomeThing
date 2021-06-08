@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+}
+#title {
+  padding: 20px 0;
+}
+.choiceItem {
+  padding: 30px 20px;
+  background-color: #232323;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.choiceItem:hover {
+  background-color: #454545;
+}
+#listGroup {
+  margin-top: 20px;
+}
+#resultCard {
+  padding-top: 20px;
+}
+#resultCard .card {
+  background: #232323;
+  color: #fff;
+}
+#resultCard .card-subtitle {
+  color: #fff !important;
+  font-size: 30;
+}
+#imgHolder {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+#imgHolder img {
+  width: 100%;
+  height: auto;
+}
