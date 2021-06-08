@@ -12,7 +12,7 @@ body {
   background-color: #232323;
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
-.choiceItem:hover {
+.choiceItem:active {
   background-color: #454545;
 }
 #listGroup {
