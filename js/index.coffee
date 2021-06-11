@@ -166,7 +166,7 @@ loadCurrentQuestion = ->
   $("#questionBgImg").attr "src", currentQuestion.img
 
   jQuery("#img").attr("src", currentQuestion.img)
-  jQuery("#video").attr "src", "videos/" + currentQuestion.video
+  jQuery("#video").attr "src", "videos/" + currentQuestion.video + "?playsinline=1"
   jQuery("#video").get(0).play()
   bindEvent()
 
