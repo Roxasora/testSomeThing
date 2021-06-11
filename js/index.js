@@ -125,6 +125,7 @@
 
   loadCurrentQuestion = function() {
     var choice, currentQuestion, i, j, len, liHtml, ref;
+    jQuery("#video").get(0).pause();
     console.log("load current question " + questionIndex);
     currentQuestion = window.data.data[questionIndex];
     jQuery("#qIndex").html((questionIndex + 1) + "/8");
@@ -138,6 +139,8 @@
     jQuery("#listGroup").html(liHtml);
     $("#questionBgImg").attr("src", currentQuestion.img);
     jQuery("#img").attr("src", currentQuestion.img);
+    jQuery("#video").attr("src", "videos/" + currentQuestion.video);
+    jQuery("#video").get(0).play();
     return bindEvent();
   };
 
@@ -162,13 +165,13 @@
 
   jQuery(document).ready(function() {
     var $enterBtn, $firstPage, $secondPage;
-    loadCurrentQuestion();
     $enterBtn = $("#enterBtn");
     $firstPage = $("#firstPage");
     $secondPage = $("#secondPage");
     $enterBtn.click(function() {
       console.log("enter");
-      return $secondPage.addClass("active");
+      $secondPage.addClass("active");
+      return loadCurrentQuestion();
     });
     showEnterBtnAnim();
     return jQuery("#redo").click(function() {

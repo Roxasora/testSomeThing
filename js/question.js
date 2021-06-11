@@ -7,6 +7,7 @@ window.data = {
                 "B：拍一段视频告诉朋友下雨了",
                 "C：出去淋雨感受自然"
             ],
+            "video": "rain.mp4",
             "img" : "https://img1.baidu.com/it/u=3019989739,3337206778&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -15,8 +16,8 @@ window.data = {
                 "A：中午可以吃烤肉了",
                 "B：晚上会有篝火晚会",
                 "C：一定要小心火灾"
-            ]
-            ,
+            ],
+            "video": "morning.mp4",
             "img" : "https://img1.baidu.com/it/u=4109058203,3402004275&fm=26&fmt=auto&gp=0.jpg"
         },
         {

@@ -151,6 +151,7 @@ calculateResult = ->
   jQuery("#resultCard").show()
 
 loadCurrentQuestion = ->
+  jQuery("#video").get(0).pause()
   console.log("load current question #{questionIndex}")
   currentQuestion = window.data.data[questionIndex]
   jQuery("#qIndex").html "#{questionIndex+1}/8"
@@ -165,6 +166,8 @@ loadCurrentQuestion = ->
   $("#questionBgImg").attr "src", currentQuestion.img
 
   jQuery("#img").attr("src", currentQuestion.img)
+  jQuery("#video").attr "src", "videos/" + currentQuestion.video
+  jQuery("#video").get(0).play()
   bindEvent()
 
 bindEvent = ->
@@ -182,7 +185,6 @@ showEnterBtnAnim = ->
   console.log "h"
 
 jQuery(document).ready ->
-  loadCurrentQuestion()
 
   $enterBtn = $("#enterBtn")
   $firstPage = $("#firstPage")
@@ -191,6 +193,10 @@ jQuery(document).ready ->
     console.log("enter")
     # $firstPage.removeClass "active"
     $secondPage.addClass "active"
+    loadCurrentQuestion()
+
+
+  # $enterBtn.click()
 
   showEnterBtnAnim()
 

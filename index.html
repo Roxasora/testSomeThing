@@ -49,7 +49,8 @@
               根据 MBTI 经典理论和《气象心理学》前沿研究得出结论 
             </div>
             <div class="img-holder logo-img">
-              <img src="images/logo.png" alt="">
+              <img src="images/logo-center.png" id="logoCenter" alt="">
+              <img src="images/logo-outline.png" id = "logoOutline" alt="">
             </div>
           </div>
           <div class="title">
@@ -76,17 +77,25 @@
       </div>
     </div>
     <div class="page second-page" id="secondPage">
-      <div class="bg-img-holder">
+      <!-- <div class="bg-img-holder">
         <div class="bg-blur"></div>
         <img src="images/firstBg.jpg" id="questionBgImg" alt="">
+      </div> -->
+      <div class="video-holder">
+        <video src="videos/rain.mp4" loop="true" id="video"></video>
       </div>
       <div class="page-content">
         <div id="questionCard">
-          <div class="q-index" id="qIndex">01/08</div>
-          <div class="q-title" id="qTitle">这是问题</div>
-          <div class="q-img-holder">
-            <img src="https://img0.baidu.com/it/u=3872751877,3206489016&fm=26&fmt=auto&gp=0.jpg" alt="" id="img">
+          <!-- <div class="q-index" id="qIndex">01/08</div> -->
+          <div class="question">
+            <div class="img-holder" id="qAvatar">
+              <img src="images/q-avatar.jpg" alt="">
+            </div>
+            <div class="q-title" id="qTitle">这是问题</div>
           </div>
+          <!-- <div class="q-img-holder">
+            <img src="https://img0.baidu.com/it/u=3872751877,3206489016&fm=26&fmt=auto&gp=0.jpg" alt="" id="img">
+          </div> -->
           <ul class="q-list" id="listGroup">
             <li class="-group-item">An item</li>
             <li class="list-group-item">A second item</li>
