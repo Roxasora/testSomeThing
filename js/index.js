@@ -1,5 +1,5 @@
 (function() {
-  var bindEvent, calculateResult, checkIfScoreArrayItemNotSame, choiceArray, h, loadCurrentQuestion, m, p, questionIndex, r;
+  var bindEvent, calculateResult, checkIfScoreArrayItemNotSame, choiceArray, h, loadCurrentQuestion, m, p, questionIndex, r, showEnterBtnAnim;
 
   questionIndex = 0;
 
@@ -127,14 +127,16 @@
     var choice, currentQuestion, i, j, len, liHtml, ref;
     console.log("load current question " + questionIndex);
     currentQuestion = window.data.data[questionIndex];
-    jQuery("#title").html(currentQuestion.question);
+    jQuery("#qIndex").html((questionIndex + 1) + "/8");
+    jQuery("#qTitle").html(currentQuestion.question);
     liHtml = "";
     ref = currentQuestion.choices;
     for (i = j = 0, len = ref.length; j < len; i = ++j) {
       choice = ref[i];
-      liHtml += "<li class='list-group-item choiceItem' data-index=" + i + ">" + choice + "</li>";
+      liHtml += "<div><li class='list-group-item choiceItem' data-index=" + i + ">" + choice + "</li></div>";
     }
     jQuery("#listGroup").html(liHtml);
+    $("#questionBgImg").attr("src", currentQuestion.img);
     jQuery("#img").attr("src", currentQuestion.img);
     return bindEvent();
   };
@@ -154,8 +156,21 @@
     });
   };
 
+  showEnterBtnAnim = function() {
+    return console.log("h");
+  };
+
   jQuery(document).ready(function() {
+    var $enterBtn, $firstPage, $secondPage;
     loadCurrentQuestion();
+    $enterBtn = $("#enterBtn");
+    $firstPage = $("#firstPage");
+    $secondPage = $("#secondPage");
+    $enterBtn.click(function() {
+      console.log("enter");
+      return $secondPage.addClass("active");
+    });
+    showEnterBtnAnim();
     return jQuery("#redo").click(function() {
       questionIndex = 0;
       choiceArray = [];

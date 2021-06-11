@@ -153,13 +153,16 @@ calculateResult = ->
 loadCurrentQuestion = ->
   console.log("load current question #{questionIndex}")
   currentQuestion = window.data.data[questionIndex]
-  jQuery("#title").html(currentQuestion.question)
+  jQuery("#qIndex").html "#{questionIndex+1}/8"
+  jQuery("#qTitle").html(currentQuestion.question)
 
   liHtml = ""
   for choice, i in currentQuestion.choices
-    liHtml += "<li class='list-group-item choiceItem' data-index=#{i}>#{choice}</li>"
+    liHtml += "<div><li class='list-group-item choiceItem' data-index=#{i}>#{choice}</li></div>"
 
   jQuery("#listGroup").html(liHtml)
+
+  $("#questionBgImg").attr "src", currentQuestion.img
 
   jQuery("#img").attr("src", currentQuestion.img)
   bindEvent()
@@ -175,8 +178,22 @@ bindEvent = ->
     else
       loadCurrentQuestion()
 
+showEnterBtnAnim = ->
+  console.log "h"
+
 jQuery(document).ready ->
   loadCurrentQuestion()
+
+  $enterBtn = $("#enterBtn")
+  $firstPage = $("#firstPage")
+  $secondPage = $("#secondPage")
+  $enterBtn.click ->
+    console.log("enter")
+    # $firstPage.removeClass "active"
+    $secondPage.addClass "active"
+
+  showEnterBtnAnim()
+
   jQuery("#redo").click ->
     questionIndex = 0
     choiceArray = []

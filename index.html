@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta name="viewport" content="width=device-width,initial-scale=1.0 user-scalable=no">
   <link rel="shortcut icon" type="image/png" href="favicon_64.ico" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"  crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/index.css">
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
      crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
   <script type="text/javascript" src="js/question.js"></script>
   <script type="text/javascript" src="js/color.js"></script>
+  <script type="text/javascript" src="js/anime.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script>
   </script>
@@ -37,31 +40,75 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="questionCard">
-      <h2 class="title" id="title">这是问题</h1>
-      <div id="imgHolder">
-        <img src="https://img0.baidu.com/it/u=3872751877,3206489016&fm=26&fmt=auto&gp=0.jpg" alt="" id="img">
+  <div class="full-page" id="fullPage">
+    <div class="page first-page active" id="firstPage">
+      <div class="page-content">
+        <div class="top">
+          <div class="align-right-box">
+            <div class="label-holder">
+              根据 MBTI 经典理论和《气象心理学》前沿研究得出结论 
+            </div>
+            <div class="img-holder logo-img">
+              <img src="images/logo.png" alt="">
+            </div>
+          </div>
+          <div class="title">
+            <div class="title0">
+              测一测<br/>你的
+            </div>
+            <div class="title1">
+              天气人格
+            </div>
+          </div>
+          <div class="icons img-holder">
+            <img src="images/index-icons.png" alt="">
+          </div>
+        </div>
+        <div class="align-right-box enter-btn-holder">
+          <div id="enterBtn">
+            点击开始 →
+          </div>
+        </div>
       </div>
-      <ul class="list-group" id="listGroup">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
+      <div class="bg-img-holder">
+        <div class="bg-blur"></div>
+        <img src="images/firstBg.jpg" alt="">
+      </div>
     </div>
-    <div id="resultCard" style="display:none;">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="button button-primary card-link" id="redo">重来</a>
+    <div class="page second-page" id="secondPage">
+      <div class="bg-img-holder">
+        <div class="bg-blur"></div>
+        <img src="images/firstBg.jpg" id="questionBgImg" alt="">
+      </div>
+      <div class="page-content">
+        <div id="questionCard">
+          <div class="q-index" id="qIndex">01/08</div>
+          <div class="q-title" id="qTitle">这是问题</div>
+          <div class="q-img-holder">
+            <img src="https://img0.baidu.com/it/u=3872751877,3206489016&fm=26&fmt=auto&gp=0.jpg" alt="" id="img">
+          </div>
+          <ul class="q-list" id="listGroup">
+            <li class="-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">A fourth item</li>
+            <li class="list-group-item">And a fifth one</li>
+          </ul>
+        </div>
+        <div id="resultCard" style="display:none;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="button button-primary card-link" id="redo">重来</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
 </body>
 
 </html>

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "SourceHanSerifCN-Medium";
+    src: url("SourceHanSerifCN-Medium.eot"); /* IE9 */
+    src: url("SourceHanSerifCN-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    
+    url("SourceHanSerifCN-Medium.woff") format("woff"), /* chrome、firefox */
+    url("SourceHanSerifCN-Medium.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    
+    url("SourceHanSerifCN-Medium.svg#SourceHanSerifCN-Medium") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
