@@ -164,11 +164,11 @@ loadCurrentQuestion = ->
 
   jQuery("#listGroup").html(liHtml)
 
-  $("#questionBgImg").attr "src", currentQuestion.img
-
-  jQuery("#img").attr("src", currentQuestion.img)
-  $video.attr "src", "videos/" + currentQuestion.video
-  $audio.attr "src", "videos/" + currentQuestion.audio
+  # $("#questionBgImg").attr "src", currentQuestion.img
+  # jQuery("#img").attr("src", currentQuestion.img)
+  
+  $video.attr "src", currentQuestion.video
+  $audio.attr "src", currentQuestion.audio
   $video.get(0).play()
   $audio.get(0).play()
   bindEvent()
@@ -194,26 +194,31 @@ loadResources = ->
   resources = []
   for item in window.data.data
     if item.video
-      resources.push "videos/" + item.video
+      resources.push item.video
     if item.audio
-      resources.push "videos/" + item.audio
-  preloader = new Preloader({
-    resources: resources,
-    concurrency: 4
-  })
-  preloader.addProgressListener (loaded, length)->
-    console.log('loading ', loaded, length, loaded / length)
-    progress = loaded / length
+      resources.push item.audio
+
+  preloader = new createjs.LoadQueue()
+  # preloader.addFiles resources
+  preloader.installPlugin(createjs.Sound);  
+
+  preloader.on "progress", (e)->
+  # preloader.addProgressListener (loaded, length)->
+  # preloader.progressCallback = (progress)->
+    # console.log('loading ', loaded, length, loaded / length)
+    # progress = loaded / length
+    progress = preloader.progress
     jQuery("#loadingLabel").html "#{parseInt(progress * 100)}%"
     jQuery("#loadingBar").css "width", "#{progress * 100}%"
   
-  preloader.addCompletionListener ()->
+  # preloader.addCompletionListener ()->
+  preloader.on 'complete', ()->
     console.log('load completed')
 
     jQuery("#enterBtn").show()
     jQuery("#loadingHolder").hide()
 
-  preloader.start()
+  preloader.loadManifest resources
 
 
   showEnterBtnAnim()

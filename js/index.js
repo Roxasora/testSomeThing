@@ -138,10 +138,8 @@
       liHtml += "<div><li class='list-group-item choiceItem' data-index=" + i + ">" + choice + "</li></div>";
     }
     jQuery("#listGroup").html(liHtml);
-    $("#questionBgImg").attr("src", currentQuestion.img);
-    jQuery("#img").attr("src", currentQuestion.img);
-    $video.attr("src", "videos/" + currentQuestion.video);
-    $audio.attr("src", "videos/" + currentQuestion.audio);
+    $video.attr("src", currentQuestion.video);
+    $audio.attr("src", currentQuestion.audio);
     $video.get(0).play();
     $audio.get(0).play();
     return bindEvent();
@@ -177,29 +175,26 @@
     for (j = 0, len = ref.length; j < len; j++) {
       item = ref[j];
       if (item.video) {
-        resources.push("videos/" + item.video);
+        resources.push(item.video);
       }
       if (item.audio) {
-        resources.push("videos/" + item.audio);
+        resources.push(item.audio);
       }
     }
-    preloader = new Preloader({
-      resources: resources,
-      concurrency: 4
-    });
-    preloader.addProgressListener(function(loaded, length) {
+    preloader = new createjs.LoadQueue();
+    preloader.installPlugin(createjs.Sound);
+    preloader.on("progress", function(e) {
       var progress;
-      console.log('loading ', loaded, length, loaded / length);
-      progress = loaded / length;
+      progress = preloader.progress;
       jQuery("#loadingLabel").html((parseInt(progress * 100)) + "%");
       return jQuery("#loadingBar").css("width", (progress * 100) + "%");
     });
-    preloader.addCompletionListener(function() {
+    preloader.on('complete', function() {
       console.log('load completed');
       jQuery("#enterBtn").show();
       return jQuery("#loadingHolder").hide();
     });
-    preloader.start();
+    preloader.loadManifest(resources);
     return showEnterBtnAnim();
   };
 
