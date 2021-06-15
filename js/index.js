@@ -140,7 +140,7 @@
     jQuery("#listGroup").html(liHtml);
     $("#questionBgImg").attr("src", currentQuestion.img);
     jQuery("#img").attr("src", currentQuestion.img);
-    $video.attr("src", "videos/" + currentQuestion.video + "?playsinline=1");
+    $video.attr("src", "videos/" + currentQuestion.video);
     $audio.attr("src", "videos/" + currentQuestion.audio);
     $video.get(0).play();
     $audio.get(0).play();
