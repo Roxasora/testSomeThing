@@ -19,6 +19,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
      crossorigin="anonymous"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+  <script type="text/javascript" src="js/preloader.js"></script>
   <script type="text/javascript" src="js/question.js"></script>
   <script type="text/javascript" src="js/color.js"></script>
   <script type="text/javascript" src="js/anime.min.js"></script>
@@ -66,7 +67,14 @@
           </div>
         </div>
         <div class="align-right-box enter-btn-holder">
-          <div id="enterBtn">
+          <div class="loading-holder" id="loadingHolder">
+            <div id="loadingBar">
+            </div>
+            <div id="loadingLabel">
+              54%
+            </div>
+          </div>
+          <div id="enterBtn" class="hidden">
             点击开始 →
           </div>
         </div>
@@ -83,6 +91,7 @@
       </div> -->
       <div class="video-holder">
         <video src="videos/rain.mp4" playsinline webkit-playsinline loop="true" id="video"></video>
+        <audio src="audios" loop="true" id="audio"></audio>
       </div>
       <div class="page-content">
         <div id="questionCard">

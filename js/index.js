@@ -1,5 +1,5 @@
 (function() {
-  var bindEvent, calculateResult, checkIfScoreArrayItemNotSame, choiceArray, h, loadCurrentQuestion, m, p, questionIndex, r, showEnterBtnAnim;
+  var $audio, $video, bindEvent, calculateResult, checkIfScoreArrayItemNotSame, choiceArray, h, loadCurrentQuestion, loadResources, m, p, questionIndex, r, showEnterBtnAnim;
 
   questionIndex = 0;
 
@@ -125,7 +125,8 @@
 
   loadCurrentQuestion = function() {
     var choice, currentQuestion, i, j, len, liHtml, ref;
-    jQuery("#video").get(0).pause();
+    $video.get(0).pause();
+    $audio.get(0).pause();
     console.log("load current question " + questionIndex);
     currentQuestion = window.data.data[questionIndex];
     jQuery("#qIndex").html((questionIndex + 1) + "/8");
@@ -139,8 +140,10 @@
     jQuery("#listGroup").html(liHtml);
     $("#questionBgImg").attr("src", currentQuestion.img);
     jQuery("#img").attr("src", currentQuestion.img);
-    jQuery("#video").attr("src", "videos/" + currentQuestion.video + "?playsinline=1");
-    jQuery("#video").get(0).play();
+    $video.attr("src", "videos/" + currentQuestion.video + "?playsinline=1");
+    $audio.attr("src", "videos/" + currentQuestion.audio);
+    $video.get(0).play();
+    $audio.get(0).play();
     return bindEvent();
   };
 
@@ -163,17 +166,56 @@
     return console.log("h");
   };
 
+  $video = null;
+
+  $audio = null;
+
+  loadResources = function() {
+    var item, j, len, preloader, ref, resources;
+    resources = [];
+    ref = window.data.data;
+    for (j = 0, len = ref.length; j < len; j++) {
+      item = ref[j];
+      if (item.video) {
+        resources.push("videos/" + item.video);
+      }
+      if (item.audio) {
+        resources.push("videos/" + item.audio);
+      }
+    }
+    preloader = new Preloader({
+      resources: resources,
+      concurrency: 4
+    });
+    preloader.addProgressListener(function(loaded, length) {
+      var progress;
+      console.log('loading ', loaded, length, loaded / length);
+      progress = loaded / length;
+      jQuery("#loadingLabel").html((parseInt(progress * 100)) + "%");
+      return jQuery("#loadingBar").css("width", (progress * 100) + "%");
+    });
+    preloader.addCompletionListener(function() {
+      console.log('load completed');
+      jQuery("#enterBtn").show();
+      return jQuery("#loadingHolder").hide();
+    });
+    preloader.start();
+    return showEnterBtnAnim();
+  };
+
   jQuery(document).ready(function() {
     var $enterBtn, $firstPage, $secondPage;
     $enterBtn = $("#enterBtn");
     $firstPage = $("#firstPage");
     $secondPage = $("#secondPage");
+    $video = $("#video");
+    $audio = $("#audio");
     $enterBtn.click(function() {
       console.log("enter");
       $secondPage.addClass("active");
       return loadCurrentQuestion();
     });
-    showEnterBtnAnim();
+    loadResources();
     return jQuery("#redo").click(function() {
       questionIndex = 0;
       choiceArray = [];

@@ -8,6 +8,7 @@ window.data = {
                 "C：出去淋雨感受自然"
             ],
             "video": "rain.mp4",
+            "audio" : "sound-rain.mp3",
             "img" : "https://img1.baidu.com/it/u=3019989739,3337206778&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -18,6 +19,7 @@ window.data = {
                 "C：一定要小心火灾"
             ],
             "video": "morning.mp4",
+            "audio" : "sound-morning.mp3",
             "img" : "https://img1.baidu.com/it/u=4109058203,3402004275&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -27,6 +29,8 @@ window.data = {
                 "B：联想到恐怖片",
                 "C：觉得很吵"
             ],
+            "video": "sunset.mp4",
+            "audio" : "sound-sunset.mp3",
             "img" : "https://img0.baidu.com/it/u=1034440838,2203949098&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -36,6 +40,8 @@ window.data = {
                 "B：朋友们雨中嬉戏打闹",
                 "C：有人喝醉了 "
             ],
+            "video": "thunder.mp4",
+            "audio" : "sound-thunder.mp3",
             "img" : "https://img1.baidu.com/it/u=2104853630,2457120225&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -45,6 +51,8 @@ window.data = {
                 "B：一年又要过去了",
                 "C：担心出行麻烦"
             ],
+            "video": "snow.mp4",
+            "audio" : "sound-snow.mp3",
             "img" : "https://img0.baidu.com/it/u=1936790453,4146819206&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -54,6 +62,8 @@ window.data = {
                 "B：紧跟自己进门的异性",
                 "C：长得很像某个朋友的人"
             ],
+            "video": "coffee.mp4",
+            "audio" : "sound-coffee.mp3",
             "img" : "https://img1.baidu.com/it/u=3404543564,3631362303&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -63,6 +73,7 @@ window.data = {
                 "B：古典音乐",
                 "C：空灵轻盈的音乐"
             ],
+            "video": "aurora.mp4",
             "img" : "https://img0.baidu.com/it/u=881869116,3364233936&fm=26&fmt=auto&gp=0.jpg"
         },
         {
@@ -72,6 +83,8 @@ window.data = {
                 "B：忧伤的看着远方",
                 "C：专注认真"
             ],
+            "video": "park.mp4",
+            "audio" : "sound-park.mp3",
             "img" : "https://img0.baidu.com/it/u=3872751877,3206489016&fm=26&fmt=auto&gp=0.jpg"
         }
     ]

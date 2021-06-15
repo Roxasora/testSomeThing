@@ -151,7 +151,8 @@ calculateResult = ->
   jQuery("#resultCard").show()
 
 loadCurrentQuestion = ->
-  jQuery("#video").get(0).pause()
+  $video.get(0).pause()
+  $audio.get(0).pause()
   console.log("load current question #{questionIndex}")
   currentQuestion = window.data.data[questionIndex]
   jQuery("#qIndex").html "#{questionIndex+1}/8"
@@ -166,8 +167,10 @@ loadCurrentQuestion = ->
   $("#questionBgImg").attr "src", currentQuestion.img
 
   jQuery("#img").attr("src", currentQuestion.img)
-  jQuery("#video").attr "src", "videos/" + currentQuestion.video + "?playsinline=1"
-  jQuery("#video").get(0).play()
+  $video.attr "src", "videos/" + currentQuestion.video + "?playsinline=1"
+  $audio.attr "src", "videos/" + currentQuestion.audio
+  $video.get(0).play()
+  $audio.get(0).play()
   bindEvent()
 
 bindEvent = ->
@@ -184,21 +187,53 @@ bindEvent = ->
 showEnterBtnAnim = ->
   console.log "h"
 
-jQuery(document).ready ->
+$video = null
+$audio = null
 
+loadResources = ->
+  resources = []
+  for item in window.data.data
+    if item.video
+      resources.push "videos/" + item.video
+    if item.audio
+      resources.push "videos/" + item.audio
+  preloader = new Preloader({
+    resources: resources,
+    concurrency: 4
+  })
+  preloader.addProgressListener (loaded, length)->
+    console.log('loading ', loaded, length, loaded / length)
+    progress = loaded / length
+    jQuery("#loadingLabel").html "#{parseInt(progress * 100)}%"
+    jQuery("#loadingBar").css "width", "#{progress * 100}%"
+  
+  preloader.addCompletionListener ()->
+    console.log('load completed')
+
+    jQuery("#enterBtn").show()
+    jQuery("#loadingHolder").hide()
+
+  preloader.start()
+
+
+  showEnterBtnAnim()
+
+
+jQuery(document).ready ->
   $enterBtn = $("#enterBtn")
   $firstPage = $("#firstPage")
   $secondPage = $("#secondPage")
+  $video = $("#video")
+  $audio = $("#audio")
   $enterBtn.click ->
     console.log("enter")
     # $firstPage.removeClass "active"
     $secondPage.addClass "active"
     loadCurrentQuestion()
 
-
   # $enterBtn.click()
 
-  showEnterBtnAnim()
+  loadResources()
 
   jQuery("#redo").click ->
     questionIndex = 0
